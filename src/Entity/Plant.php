@@ -23,6 +23,12 @@ class Plant
     #[ORM\Column]
     private ?int $level = null;
 
+    #[ORM\Column]
+    private ?bool $isShow = null;
+
+    #[ORM\OneToOne(inversedBy: 'idPlant', cascade: ['persist', 'remove'])]
+    private ?Image $idImage = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -60,6 +66,30 @@ class Plant
     public function setLevel(int $level): self
     {
         $this->level = $level;
+
+        return $this;
+    }
+
+    public function isIsShow(): ?bool
+    {
+        return $this->isShow;
+    }
+
+    public function setIsShow(bool $isShow): self
+    {
+        $this->isShow = $isShow;
+
+        return $this;
+    }
+
+    public function getIdImage(): ?Image
+    {
+        return $this->idImage;
+    }
+
+    public function setIdImage(?Image $idImage): self
+    {
+        $this->idImage = $idImage;
 
         return $this;
     }
