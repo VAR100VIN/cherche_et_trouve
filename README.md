@@ -36,9 +36,7 @@
 
 * Entrez l'adresse de votre serveur local dans l'url
 
-* Si vous souhaitez vous connecter au Back Office :
-
-```email: admin@gmail.com mdp: admin```
+* Si vous souhaitez vous connecter au Back Office, créez un user et adressez-lui le role admin ["USER_ADMIN"] ainsi qu'un mail et un mdp
 
 ## Les créateurs du projet :
 
