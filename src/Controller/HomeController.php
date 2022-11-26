@@ -22,7 +22,7 @@ class HomeController extends AbstractController
             ]);
         }
     }
-    #[Route('/home/play', name: 'app_play')]
+    #[Route('/play', name: 'app_play')]
     public function play(PlantRepository $plantRepository): Response
     {
         if (!$this->getUser()) {
@@ -33,7 +33,7 @@ class HomeController extends AbstractController
             ]);
         }
     }
-    #[Route('/home/profil', name: 'app_profil')]
+    #[Route('/profil', name: 'app_profil')]
     public function profil(): Response
     {
         if (!$this->getUser()) {
@@ -44,7 +44,7 @@ class HomeController extends AbstractController
             ]);
         }
     }
-    #[Route('/home/stats', name: 'app_stats')]
+    #[Route('/stats', name: 'app_stats')]
     public function stats(): Response
     {
         if (!$this->getUser()) {

@@ -1,0 +1,12 @@
+body {
+  background-image: url("../medias/bg-login-register.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+
+.red-c {
+  color: red;
+}
+
+/*# sourceMappingURL=home.css.map */
