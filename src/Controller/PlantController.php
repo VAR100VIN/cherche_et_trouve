@@ -65,14 +65,4 @@ class PlantController extends AbstractController
             'form' => $form,
         ]);
     }
-
-    #[Route('/{id}', name: 'app_plant_delete', methods: ['POST'])]
-    public function delete(Request $request, Plant $plant, PlantRepository $plantRepository): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$plant->getId(), $request->request->get('_token'))) {
-            $plantRepository->remove($plant, true);
-        }
-
-        return $this->redirectToRoute('app_plant_index', [], Response::HTTP_SEE_OTHER);
-    }
 }
