@@ -16,9 +16,13 @@ class PlantController extends AbstractController
     #[Route('/', name: 'app_plant_index', methods: ['GET'])]
     public function index(PlantRepository $plantRepository): Response
     {
-        return $this->render('plant/index.html.twig', [
-            'plants' => $plantRepository->findAll(),
-        ]);
+        if (!$this->getUser()) {
+            return $this->redirectToRoute('app_login');
+        } else {
+            return $this->render('plant/index.html.twig', [
+                'plants' => $plantRepository->findAll(),
+            ]);
+        }
     }
 
     #[Route('/new', name: 'app_plant_new', methods: ['GET', 'POST'])]
@@ -34,18 +38,26 @@ class PlantController extends AbstractController
             return $this->redirectToRoute('app_plant_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('plant/new.html.twig', [
-            'plant' => $plant,
-            'form' => $form,
-        ]);
+        if (!$this->getUser()) {
+            return $this->redirectToRoute('app_login');
+        } else {
+            return $this->renderForm('plant/new.html.twig', [
+                'plant' => $plant,
+                'form' => $form,
+            ]);
+        }
     }
 
     #[Route('/{id}', name: 'app_plant_show', methods: ['GET'])]
     public function show(Plant $plant): Response
     {
-        return $this->render('plant/show.html.twig', [
-            'plant' => $plant,
-        ]);
+        if (!$this->getUser()) {
+            return $this->redirectToRoute('app_login');
+        } else {
+            return $this->render('plant/show.html.twig', [
+                'plant' => $plant,
+            ]);
+        }
     }
 
     #[Route('/{id}/edit', name: 'app_plant_edit', methods: ['GET', 'POST'])]
@@ -60,9 +72,13 @@ class PlantController extends AbstractController
             return $this->redirectToRoute('app_plant_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('plant/edit.html.twig', [
-            'plant' => $plant,
-            'form' => $form,
-        ]);
+        if (!$this->getUser()) {
+            return $this->redirectToRoute('app_login');
+        } else {
+            return $this->renderForm('plant/edit.html.twig', [
+                'plant' => $plant,
+                'form' => $form,
+            ]);
+        }
     }
 }
