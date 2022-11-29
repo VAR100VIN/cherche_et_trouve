@@ -5,8 +5,84 @@ body {
   background-size: 100% 100%;
 }
 
+.disp-f {
+  display: flex;
+}
+
+.j-c-c {
+  justify-content: center;
+}
+
+.al-c {
+  align-items: center;
+}
+
+.f-d-c {
+  flex-direction: column;
+}
+
 .red-c {
   color: red;
 }
 
-/*# sourceMappingURL=home.css.map */
+.bg-c-white {
+  background-color: #dcdbe1;
+}
+
+.card-s {
+  width: 1000px;
+  height: 700px;
+}
+
+.img-s {
+  width: 450px;
+  height: 650px;
+}
+
+.w-100pc {
+  width: 100%;
+}
+
+.w-50pc {
+  width: 50%;
+}
+
+.h-100pc {
+  height: 100%;
+}
+
+.h-100vh {
+  height: 100vh;
+}
+
+button {
+  cursor: pointer;
+  border: 0;
+  border-radius: 4px;
+  font-weight: 600;
+  margin: 0 10px;
+  width: 200px;
+  padding: 10px 0;
+  box-shadow: 0 0 20px rgba(104, 85, 224, 0.2);
+  transition: 0.4s;
+}
+
+.reg {
+  color: white;
+  background-color: rgb(104, 85, 224);
+}
+
+.log {
+  color: rgb(104, 85, 224);
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(104, 85, 224);
+}
+
+button:hover {
+  color: white;
+  width: none;
+  box-shadow: 0 0 20px rgba(104, 85, 224, 0.6);
+  background-color: rgb(104, 85, 224);
+}
+
+/*# sourceMappingURL=register-login.css.map */

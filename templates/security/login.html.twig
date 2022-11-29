@@ -7,17 +7,24 @@
 {% endblock %}
 
 {% block body %}
-    <form action="{{ path('app_login') }}" method="post">
-        <label for="username">Email:</label>
-        <input type="text" id="username" name="_username" value="{{ last_username }}">
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="_password">
-        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-        {% if error %}
-            <p class="red-c">Les coordonnées que vous avez entrées sont invalides, veuillez revérifier celles-ci.</p>
-        {% endif %}
-        <button type="submit">Se connecter</button>
-        <a href="{{ path('app_register') }}">S'inscrire</a>
-
-    </form>
+    <main class="disp-f j-c-c al-c w-100pc h-100vh">
+        <div class="disp-f bg-c-white card-s">
+            <div class="disp-f j-c-c w-50pc h-100pc">
+                <form class="disp-f j-c-c f-d-c" action="{{ path('app_login') }}" method="post">
+                    <label for="username">Email:</label>
+                    <input type="text" id="username" name="_username" value="{{ last_username }}">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="_password">
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                    {% if error %}
+                        <p class="red-c">Les coordonnées que vous avez entrées sont invalides, veuillez revérifier celles-ci.</p>
+                    {% endif %}
+                    <button class="log" type="submit">Se connecter</button>
+                    <a class="reg" href="{{ path('app_register') }}">S'inscrire</a>
+                </form>
+            </div>
+            <div class="w-50pc h-100pc disp-f j-c-c al-c">
+                <img class="img-s" src="{{ asset('assets/medias/login-child.png') }}" alt="a child with flowers">
+            </div>
+    </main>
 {% endblock %}
