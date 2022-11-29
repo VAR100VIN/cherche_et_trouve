@@ -54,6 +54,14 @@ body {
   width: 50%;
 }
 
+.w-250px {
+  width: 250px;
+}
+
+.w-275px {
+  width: 275px;
+}
+
 .h-100pc {
   height: 100%;
 }
