@@ -18,8 +18,8 @@
     "scripts": {
         "dev-server": "encore dev-server",
         "dev": "encore dev",
-        "compile": "sass public/assets/styles/style.scss public/assets/styles/register-login.css",
-        "watch": "sass --watch public/assets/styles/style.scss public/assets/styles/register-login.css",
+        "compile": "sass public/assets/styles/style.scss public/assets/styles/style.css",
+        "watch": "sass --watch public/assets/styles/style.scss public/assets/styles/style.css",
         "build": "encore production --progress"
     }
 }
