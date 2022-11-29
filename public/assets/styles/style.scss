@@ -3,6 +3,7 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100% 100%;
+    font-family: 'Roboto', sans-serif;
 }
 
 .disp-f {
@@ -26,17 +27,23 @@ body {
 }
 
 .bg-c-white {
-    background-color: #dcdbe1;
+    background: rgba(255, 255, 255, 0);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(9.9px);
+    -webkit-backdrop-filter: blur(9.9px);
 }
 
 .card-s {
     width: 1000px;
     height: 700px;
+    border-radius: 30px;
 }
 
 .img-s {
     width: 450px;
     height: 650px;
+    border-radius: 30px;
 }
 
 .w-100pc {
@@ -55,32 +62,79 @@ body {
     height: 100vh;
 }
 
-button {
-    cursor: pointer;
-    border: 0;
-    border-radius: 4px;
-    font-weight: 600;
-    margin: 0 10px;
-    width: 200px;
-    padding: 10px 0;
-    box-shadow: 0 0 20px rgba(104, 85, 224, 0.2);
-    transition: 0.4s;
+.b-log {
+	cursor: pointer;
+	border: 0;
+	border-radius: 4px;
+	font-weight: 600;
+	width: 135px;
+	padding: 10px 0;
+	box-shadow: 0 0 20px rgba(104, 85, 224, 0.2);
+	transition: 0.4s;
+	color: rgb(104, 85, 224);
+	background-color: rgba(255, 255, 255, 1);
+	border: 1px solid rgba(104, 85, 224, 1);
+	&:hover {
+		color: white;
+		width: none;
+		box-shadow: 0 0 20px rgba(104, 85, 224, 0.6);
+		background-color: rgba(104, 85, 224, 1);
+	}
 }
-  
-.reg {
-    color: white;
-    background-color: rgba(104, 85, 224, 1);
+
+.b-reg {
+	display: block;
+	cursor: pointer;
+	text-decoration: none;
+	border: 0;
+	border-radius: 4px;
+	font-weight: 600;
+	width: 135px;
+	padding: 10px 0;
+	text-align: center;
+	box-shadow: 0 0 20px rgba(104, 85, 224, 0.2);
+	transition: 0.4s;
+	color: rgb(104, 85, 224);
+	background-color: rgba(255, 255, 255, 1);
+	border: 1px solid rgba(104, 85, 224, 1);
+	&:hover {
+		color: white;
+		width: none;
+		box-shadow: 0 0 20px rgba(104, 85, 224, 0.6);
+		background-color: rgba(104, 85, 224, 1);
+	}
 }
-  
-.log {
-    color: rgb(104, 85, 224);
-    background-color: rgba(255, 255, 255, 1);
-    border: 1px solid rgba(104, 85, 224, 1);
+
+.gap-20px {
+    gap: 20px;
 }
-  
-button:hover {
-    color: white;
-    width: none;
-    box-shadow: 0 0 20px rgba(104, 85, 224, 0.6);
-    background-color: rgba(104, 85, 224, 1);
+
+.mg-t-20px {
+    margin-top: 20px;
+}
+
+.mg-b-100px {
+    margin-bottom: 100px;
+}
+
+@media screen and (max-width: 1100px) {
+    .f-d-c-m {
+        flex-direction: column-reverse;
+    }
+    .card-s {
+        width: 600px;
+        height: 700px;
+        border-radius: 30px;
+    }
+    .img-s {
+        width: 450px;
+        height: 275px;
+        border-radius: 30px;
+    }
+    .w-50pc {
+        width: 75%;
+    }
+    .mg-b-100px {
+        margin-bottom: 25px;
+    }
 }
