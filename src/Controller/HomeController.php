@@ -12,18 +12,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\PlantController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+#[Route('/home')]
 class HomeController extends AbstractController
 {
-    #[Route('/home', name: 'app_home')]
+    #[Route('/', name: 'app_home')]
     public function index(): Response
     {
-        if (!$this->getUser()) {
-            return $this->redirectToRoute('app_login');
-        } else {
-            return $this->render('home/index.html.twig', [
-                'controller_name' => 'HomeController',
-            ]);
-        }
+        return $this->render('home/index.html.twig', [
+            'controller_name' => 'HomeController',
+        ]);
     }
     #[Route('/play', name: 'app_play')]
     public function play(Request $request ,PlantRepository $plantRepository): Response
@@ -35,35 +32,23 @@ class HomeController extends AbstractController
             $find = $form->getData();
             echo 'Ajout réussi';
         }
-        if (!$this->getUser()) {
-            return $this->redirectToRoute('app_login');
-        } else {
-            return $this->render('home/play.html.twig', [
-                'plants' => $plantRepository->findAll(),
-                'form' => $form->createView()
-            ]);
-        }
+        return $this->render('home/play.html.twig', [
+            'plants' => $plantRepository->findAll(),
+            'form' => $form->createView()
+        ]);
     }
     #[Route('/profil', name: 'app_profil')]
     public function profil(): Response
     {
-        if (!$this->getUser()) {
-            return $this->redirectToRoute('app_login');
-        } else {
-            return $this->render('home/profil.html.twig', [
-                'controller_name' => 'HomeController',
-            ]);
-        }
+        return $this->render('home/profil.html.twig', [
+            'controller_name' => 'HomeController',
+        ]);
     }
     #[Route('/stats', name: 'app_stats')]
     public function stats(): Response
     {
-        if (!$this->getUser()) {
-            return $this->redirectToRoute('app_login');
-        } else {
-            return $this->render('home/stats.html.twig', [
-                'controller_name' => 'HomeController',
-            ]);
-        }
+        return $this->render('home/stats.html.twig', [
+            'controller_name' => 'HomeController',
+        ]);
     }
 }
