@@ -13,9 +13,16 @@
     <p> Voici la description de la plante à trouver </p>
     {% for plant in plants %}
     <tr>
+        <br>
+        <td>{{ plant.name}}</td>
+        <br>
         <td>{{ plant.description }}</td>
+        
     </tr>
     {% endfor %}
+    {{ form_start(form) }}
+    <button type="submit" class="btn btn-succes">Mettre photo</button>
+    {{ form_end(form) }}
 </div>
 <a href="{{ path('app_home') }}">Home</a>
 {% endblock %}

@@ -3,7 +3,10 @@
 namespace App\Controller;
 use App\Repository\PlantRepository;
 use App\Entity\Plant;
+use App\Entity\Find;
+use App\Form\FindType;
 use App\Form\PlantType;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\FrameworkBundle\Controller\PlantController;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,13 +26,17 @@ class HomeController extends AbstractController
         }
     }
     #[Route('/play', name: 'app_play')]
-    public function play(PlantRepository $plantRepository): Response
+    public function play(Request $request ,PlantRepository $plantRepository): Response
     {
+        $find = new Find();
+        $form = $this->createForm(FindType::class, $find);
+        $form->handleRequest($request);
         if (!$this->getUser()) {
             return $this->redirectToRoute('app_login');
         } else {
             return $this->render('home/play.html.twig', [
                 'plants' => $plantRepository->findAll(),
+                'form' => $form->createView()
             ]);
         }
     }
