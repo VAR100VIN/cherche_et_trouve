@@ -24,5 +24,13 @@
     <button type="submit" class="btn btn-succes">Mettre photo</button>
     {{ form_end(form) }}
 </div>
+<video id="video" width="640" height="480" autoplay></video>
+<button id="snap">Take Photo</button>
+<canvas id="canvas" width="640" height="480"></canvas>
 <a href="{{ path('app_home') }}">Home</a>
+
 {% endblock %}
+
+    {% block javascripts %}
+        <script type="text/javascript" src="{{ asset('assets/js/pic.js') }}"></script>
+    {% endblock %}
