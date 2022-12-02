@@ -31,6 +31,10 @@ class HomeController extends AbstractController
         $find = new Find();
         $form = $this->createForm(FindType::class, $find);
         $form->handleRequest($request);
+        if ($form->isSubmitted()&& $form->isValid()){
+            $find = $form->getData();
+            echo 'Ajout réussi';
+        }
         if (!$this->getUser()) {
             return $this->redirectToRoute('app_login');
         } else {

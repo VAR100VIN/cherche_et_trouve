@@ -34,6 +34,9 @@ class Plant
     #[ORM\OneToMany(mappedBy: 'plant', targetEntity: Find::class)]
     private Collection $idplant;
 
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $description_after = null;
+
     public function __construct()
     {
         $this->idplant = new ArrayCollection();
@@ -130,6 +133,18 @@ class Plant
                 $idplant->setPlant(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDescriptionAfter(): ?string
+    {
+        return $this->description_after;
+    }
+
+    public function setDescriptionAfter(string $description_after): self
+    {
+        $this->description_after = $description_after;
 
         return $this;
     }

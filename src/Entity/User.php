@@ -37,6 +37,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Find::class)]
     private Collection $iduser;
 
+    #[ORM\Column]
+    private ?int $exp = null;
+
     public function __construct()
     {
         $this->iduser = new ArrayCollection();
@@ -150,6 +153,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $iduser->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getExp(): ?int
+    {
+        return $this->exp;
+    }
+
+    public function setExp(int $exp): self
+    {
+        $this->exp = $exp;
 
         return $this;
     }
