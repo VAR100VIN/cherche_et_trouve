@@ -4,6 +4,8 @@ namespace App\Controller\Admin;
 
 use App\Entity\Plant;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
+use EasyCorp\Bundle\EasyAdminBundle\Filter\BooleanFilter;
 
 class PlantCrudController extends AbstractCrudController
 {
@@ -12,14 +14,11 @@ class PlantCrudController extends AbstractCrudController
         return Plant::class;
     }
 
-    /*
-    public function configureFields(string $pageName): iterable
+    public function configureFilters(Filters $filters): Filters
     {
-        return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
-        ];
+        return $filters
+            ->add(BooleanFilter::new('isShow'))
+        ;
     }
-    */
 }
+

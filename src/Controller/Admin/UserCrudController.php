@@ -5,6 +5,16 @@ namespace App\Controller\Admin;
 use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
+use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
+
+use EasyCorp\Bundle\EasyAdminBundle\Filter\BooleanFilter;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
+
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+
 class UserCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
@@ -12,14 +22,21 @@ class UserCrudController extends AbstractCrudController
         return User::class;
     }
 
-    /*
+    
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
+            EmailField::new('email'),
+            TextField::new('password')->setFormType(PasswordType::class),
+            ArrayField::new('roles'),
+            BooleanField::new('isVerified'),
         ];
     }
-    */
+    
+    public function configureFilters(Filters $filters): Filters
+    {
+        return $filters
+            ->add(BooleanFilter::new('isVerified'))
+            ;
+    }
 }
