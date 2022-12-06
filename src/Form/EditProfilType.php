@@ -4,6 +4,7 @@ namespace App\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -16,8 +17,9 @@ class EditProfilType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            ->add('avatar', TextareaType::class)
             ->add('email', EmailType::class)
-            ->add('pass', PasswordType::class, [
+            ->add('ModifPassword', PasswordType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,
@@ -34,7 +36,6 @@ class EditProfilType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('valider', SubmitType::class)
         ;
     }
 

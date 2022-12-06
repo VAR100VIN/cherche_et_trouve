@@ -2,12 +2,15 @@
 
 namespace App\Controller;
 use App\Repository\PlantRepository;
+use App\Repository\UserRepository;
 use App\Entity\Plant;
 use App\Entity\Find;
+use App\Entity\User;
 use App\Form\FindType;
 use App\Form\PlantType;
 use App\Form\EditProfilType;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\FrameworkBundle\Controller\PlantController;
@@ -61,7 +64,7 @@ class HomeController extends AbstractController
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
                     $user,
-                    $form->get('pass')->getData()
+                    $form->get('ModifPassword')->getData()
                 )
             );
             $em = $doctrine->getManager();
@@ -75,6 +78,19 @@ class HomeController extends AbstractController
         return $this->render('home/editprofil.html.twig', [
             'form' => $form->createView(),
         ]);
+    }
+
+    #[Route('/profil/{id}', name: 'app_user_delete', methods: ['POST'])]
+    public function delete(Request $request, User $user, UserRepository $userRepository): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
+            $userRepository->remove($user, true);
+        }
+
+        $session = new Session();
+        $session->invalidate();
+
+        return $this->redirectToRoute('app_register', [], Response::HTTP_SEE_OTHER);
     }
 
     #[Route('/stats', name: 'app_stats')]
