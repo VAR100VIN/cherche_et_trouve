@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Le plantain",
+    "level": 1,
+    "before": [
+      {
+        "text": "Le plantain est une petite plante vivace qui mesure environ 10 cm, mais peut atteindre 60 cm de haut. Elle est très commune et se répand un peu partout. Il existe trois espèces de plantain qui ont des propriétés médicinales reconnues."
+      },
+      {
+        "text": "En botanique, le plantain est une appellation qui regroupe des plantes herbacées vivaces, des Plantaginacées, généralement de milieux humides à aquatiques, du genre Plantago avec quelques 200 espèces, et le genre Alisma, les plantains d'eau de la famille des Alismatacées, pour quelques espèces d'hydrophytes semi-aquatiques."
+      }
+    ],
+    "photos": [
+      "plantain.jpg"
+    ],
+    "after": [
+      {
+        "text": "En plus de nous fournir certaines vitamines, le plantain nourrit les chenilles de papillons, les oiseaux (on connaît leur rôle d’auxiliaires au jardin) et les lapins. Il serait donc dommage de vouloir absolument s’en débarrasser si en trouvez dans votre jardin."
+      },
+      {
+        "title": "quelles sont les précautions à prendre avec cette plante ?",
+        "text": "Le plantain lancéolé est déconseillé aux femmes enceintes, mais aussi aux enfants de moins de 3 ans, car il peut causer des irritations et encombrer les voies respiratoires. Aussi, utilisé à haute dose, le plantain peut avoir des effets laxatifs et hypnotiseurs. Attention également car consommé cru, cette plante un peu toxique peut être porteur de l’échinococcose, un parasite grave."
+      }
+    ]
+  }
+]
