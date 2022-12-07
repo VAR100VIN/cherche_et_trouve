@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifiez le profil !{% endblock %}
+
+{% block body %}
+{{ form_start(form) }}
+    {{ form_row(form.avatar, {label: 'Avatar: '}) }}
+    {{ form_row(form.email, {label: 'Email: '}) }}
+    {{ form_row(form.ModifPassword, {label: 'Mot de passe:'}) }}
+    <button type="submit" class="btn">Modifier son compte</button>
+{{ form_end(form) }}
+
+<a href="{{ path('app_profil') }}">profil</a>
+{% endblock %}

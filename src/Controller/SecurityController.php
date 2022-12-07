@@ -24,6 +24,12 @@ class SecurityController extends AbstractController
         ]);
     }
 
+    #[Route(path: '/', name: 'index')]
+    public function index(): Response
+    {    
+        return $this->redirectToRoute('app_login');
+    }
+
     #[Route(path: '/logout', name: 'app_logout')]
     public function logout(): void
     {

@@ -18,6 +18,8 @@
 
 ```composer install```
 
+```npm run build```
+
 ## Démarrez le projet :
 
 * Nous avons mit un .envsample, copiez-le en le renommant .env et mettez vos identifiants de connexion à la BDD.
