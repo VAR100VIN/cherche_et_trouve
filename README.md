@@ -10,9 +10,7 @@
         - [Windows](https://getcomposer.org/)
         ou [Linux](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-composer-on-ubuntu-20-04-fr)
 
-* Faire une copie du projet en mettant dans le terminal :
-
-```git clone https://github.com/Bastienlsg/TheEmpire```
+* Cloner ce dépôt
 
 * Dans le projet faites :
 
