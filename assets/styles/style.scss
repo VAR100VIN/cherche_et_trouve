@@ -5,7 +5,12 @@ body {
     background-size: 100% 100%;
     font-family: 'Roboto', sans-serif;
 }
-
+.image{
+    width: 50%;
+    height: 50vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
 .disp-f {
     display: flex;
 }
