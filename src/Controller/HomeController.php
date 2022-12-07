@@ -37,9 +37,13 @@ class HomeController extends AbstractController
         if ($form->isSubmitted()&& $form->isValid()){
             $find = $form->getData();
             echo 'Ajout réussi';
+            return $this->render('home/playafter.html.twig', [
+                'plants' => $plantRepository->findBy(array('level'=>'1'),array('id'=>'desc'),1),
+    
+            ]); 
         }
         return $this->render('home/play.html.twig', [
-            'plants' => $plantRepository->findAll(),
+            'plants' => $plantRepository->findBy(array('level'=>'1'),array('id'=>'desc'),1),
             'form' => $form->createView()
         ]);
     }
