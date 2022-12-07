@@ -4,6 +4,7 @@ namespace App\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -17,7 +18,12 @@ class EditProfilType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('avatar', TextareaType::class)
+            ->add('avatar', ChoiceType::class, [
+                'choices'  => [
+                    'Paresseux' => 'assets/medias/sloth.png',
+                    'Pingouin' => 'assets/medias/penguin.png',
+                    'Eléphant' => 'assets/medias/elephant.png',
+                ]])
             ->add('email', EmailType::class)
             ->add('ModifPassword', PasswordType::class, [
                 // instead of being set onto the object directly,

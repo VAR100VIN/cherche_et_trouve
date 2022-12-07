@@ -2,16 +2,20 @@
 
 {% block title %}Voici votre profil !{% endblock %}
 
-{% block body %}
-<div>Nombre de plantes trouvées: </div>
-<div>Avatar: </div>
-<img src="{{ asset(app.user.avatar) }}" alt="a child with flowers" width="50" height="50">
-<div>Email: </div>
-<div>{{ app.user.email }}</div>
-<div>Points d'expérience: </div>
-<div>{{ app.user.exp | default("0") }}</div>
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/styles/profil-page.css') }}" />
+{% endblock %}
 
-<a href="{{ path('app_profil_edit') }}">Modifier mon profil</a>
+{% block body %}
+    <div>Nombre de plantes trouvées: </div>
+    <div>Avatar: </div>
+    <img src="{{ asset(app.user.avatar) }}" alt="a child with flowers" width="50" height="50">
+    <div>Email: </div>
+    <div>{{ app.user.email }}</div>
+    <div>Points d'expérience: </div>
+    <div>{{ app.user.exp | default("0") }}</div>
+
+    <a href="{{ path('app_profil_edit') }}">Modifier mon profil</a>
 {{ include('home/_delete_form.html.twig') }}
 
 <a href="{{ path('app_home') }}">Home</a>
