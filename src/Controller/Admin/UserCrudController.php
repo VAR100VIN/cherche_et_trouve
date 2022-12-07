@@ -3,7 +3,9 @@
 namespace App\Controller\Admin;
 
 use App\Entity\User;
+use App\Repository\UserRepository;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use Doctrine\ORM\EntityManagerInterface;
 
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -27,7 +29,7 @@ class UserCrudController extends AbstractCrudController
     {
         return [
             EmailField::new('email'),
-            TextField::new('password')->setFormType(PasswordType::class),
+            TextField::new('plainPassword')->setFormType(PasswordType::class),
             ArrayField::new('roles'),
             BooleanField::new('isVerified'),
         ];
@@ -39,4 +41,21 @@ class UserCrudController extends AbstractCrudController
             ->add(BooleanFilter::new('isVerified'))
             ;
     }
+    public function updateEntity(EntityManagerInterface $entityManager, $entityInstance): void
+{
+    $this->updatePassword($entityManager->getRepository(\App\Entity\User::class), $entityInstance);
+    parent::updateEntity($entityManager, $entityInstance);
+}
+
+public function persistEntity(EntityManagerInterface $entityManager, $entityInstance): void
+{
+    $this->updatePassword($entityInstance);
+    parent::persistEntity($entityManager, $entityInstance);
+}
+
+private function updatePassword(UserRepository $userRepository, User $user): void
+{
+    if ($user->getPlainPassword() == '') return;
+    $userRepository->setNewPassword($user, $user->getPlainPassword());
+}
 }

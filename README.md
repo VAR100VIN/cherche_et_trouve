@@ -18,6 +18,8 @@
 
 ```composer install```
 
+```npm install```
+
 ```npm run build```
 
 ## Démarrez le projet :
