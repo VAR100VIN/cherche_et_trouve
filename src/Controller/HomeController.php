@@ -17,6 +17,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\PlantController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Doctrine\ORM\EntityManagerInterface;
 
 #[Route('/home')]
 class HomeController extends AbstractController
@@ -29,18 +31,33 @@ class HomeController extends AbstractController
         ]);
     }
     #[Route('/play', name: 'app_play')]
-    public function play(Request $request ,PlantRepository $plantRepository): Response
+    public function play(Request $request ,PlantRepository $plantRepository,UserRepository $userrepository, EntityManagerInterface $em): Response
     {
         $find = new Find();
+        // $this->find->setUrl($find);
         $form = $this->createForm(FindType::class, $find);
         $form->handleRequest($request);
+        // $user= $userrepository->find($_POST['user']);
+        // $plant = $plantrepository->find($_POST['plant']);
+        
         if ($form->isSubmitted()&& $form->isValid()){
             $find = $form->getData();
+            
+            //move le fichier
+            // recuperer son nom
+            // $filename=$user->getName().'_'.$plant->getName().'.png';
+            // $find->setUrl($filename);
+            // $lat = addslashes($_POST['lat']);
+            // $lng = addslashes($_POST['lng']);
+            // $find->setLatitude($latitude);
+            // $find->setLongitude($longitude);
+            $em->persist($find);
+            $em->flush();
             echo 'Ajout réussi';
             return $this->render('home/playafter.html.twig', [
-                'plants' => $plantRepository->findBy(array('level'=>'1'),array('id'=>'desc'),1),
+                'plants' => $plantRepository->findBy(array('level'=>'1'),array('id'=>'desc'),1), # TODO : Please remove the level = 1
     
-            ]); 
+            ]);
         }
         return $this->render('home/play.html.twig', [
             'plants' => $plantRepository->findBy(array('level'=>'1'),array('id'=>'desc'),1),
