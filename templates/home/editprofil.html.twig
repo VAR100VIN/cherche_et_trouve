@@ -2,13 +2,25 @@
 
 {% block title %}Modifiez le profil !{% endblock %}
 
-{% block body %}
-{{ form_start(form) }}
-    {{ form_row(form.avatar, {label: 'Avatar: '}) }}
-    {{ form_row(form.email, {label: 'Email: '}) }}
-    {{ form_row(form.ModifPassword, {label: 'Mot de passe:'}) }}
-    <button type="submit" class="btn">Modifier son compte</button>
-{{ form_end(form) }}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/styles/profil-page.css') }}" />
+{% endblock %}
 
-<a href="{{ path('app_profil') }}">profil</a>
+{% block body %}
+<body>
+    <main class="disp-f j-c-c al-c w-100pc h-100vh">
+        <div class="disp-f j-c-c bg-c-white card-s al-c">
+            <div class="disp-f al-c j-c-c f-d-c w-50pc h-100pc">
+                {{ form_start(form) }}
+                    {{ form_row(form.avatar, {label: 'Avatar: '}) }}
+                    {{ form_row(form.email, {label: 'Email: '}) }}
+                    {{ form_row(form.ModifPassword, {label: 'Mot de passe:'}) }}
+                    <button type="submit" class="btn">Modifier son compte</button>
+                {{ form_end(form) }}
+                <a href="{{ path('app_profil') }}">profil</a>
+            </div>
+        </div>
+    </main>
+</body>
+
 {% endblock %}
