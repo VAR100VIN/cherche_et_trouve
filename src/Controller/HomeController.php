@@ -3,6 +3,7 @@
 namespace App\Controller;
 use App\Repository\PlantRepository;
 use App\Repository\UserRepository;
+use App\Repository\FindRepository;
 use App\Entity\Plant;
 use App\Entity\Find;
 use App\Entity\User;
@@ -56,7 +57,6 @@ class HomeController extends AbstractController
             echo 'Ajout réussi';
             return $this->render('home/playafter.html.twig', [
                 'plants' => $plantRepository->findBy(array('level'=>'1'),array('id'=>'desc'),1), # TODO : Please remove the level = 1
-    
             ]);
         }
         return $this->render('home/play.html.twig', [
@@ -115,10 +115,12 @@ class HomeController extends AbstractController
     }
 
     #[Route('/stats', name: 'app_stats')]
-    public function stats(): Response
+    public function stats(FindRepository $findRepository): Response
     {
+        $finds = $findRepository->findAll();
         return $this->render('home/stats.html.twig', [
             'controller_name' => 'HomeController',
+            'finds' => $finds,
         ]);
     }
 }
