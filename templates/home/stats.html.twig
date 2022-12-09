@@ -8,6 +8,15 @@
 {% endblock %}
 
 {% block body %}
+    {% for find in finds %}
+        {% if app.user.id == find.user.id %}
+            {% for plant in plants %}
+                {% if plant.id == find.plant.id %}
+                        <a href=stats/{{ plant.id }}><img src="{{ asset(plant.idImage.url) }}" alt="a child with flowers" width="50" height="50"></a>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    {% endfor %}
     <div id="map"></div>
 {% endblock %}
 

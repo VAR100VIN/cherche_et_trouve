@@ -4,6 +4,7 @@ namespace App\Controller;
 use App\Repository\PlantRepository;
 use App\Repository\UserRepository;
 use App\Repository\FindRepository;
+use App\Repository\ImageRepository;
 use App\Entity\Plant;
 use App\Entity\Find;
 use App\Entity\User;
@@ -115,12 +116,22 @@ class HomeController extends AbstractController
     }
 
     #[Route('/stats', name: 'app_stats')]
-    public function stats(FindRepository $findRepository): Response
+    public function stats(FindRepository $findRepository, PlantRepository $plantRepository ): Response
     {
+        $plants = $plantRepository->findAll();
         $finds = $findRepository->findAll();
         return $this->render('home/stats.html.twig', [
             'controller_name' => 'HomeController',
             'finds' => $finds,
+            'plants' => $plants,
+        ]);
+    }
+
+    #[Route('/stats/{id}', name: 'app_plant_show', methods: ['GET'])]
+    public function show(Plant $plant): Response
+    {
+        return $this->render('home/showplant.html.twig', [
+            'plant' => $plant,
         ]);
     }
 }
